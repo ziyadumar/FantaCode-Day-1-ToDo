@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/FantaCode.Todo.csproj"
+                "${workspaceFolder}/FantaCode.Todoapi.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

@@ -1,13 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using FantaCode.Todoapi;
+using FantaCode.Todoapi.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FantaCode.Todo.Controllers
+namespace FantaCode.Todoapi
 {
-    [Route("v1/[controller]")]
+    [Route("api/[controller]")]
     public class TodoController : Controller
     {
+
+        private readonly TodoRepository todoRepository;
+
+        public TodoController()
+        {
+            todoRepository = new TodoRepository();
+        }
+
+        // POST api/todo
+        [HttpPost]
+        public void Post([FromBody]Todo todo)
+        {
+            if (ModelState.IsValid)
+                todoRepository.Add(todo);
+        }
+
+        // PUT api/todo/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody]Todo todo)
+        {
+            todo.TodoId = id;
+            if (ModelState.IsValid)
+                todoRepository.Update(todo);
+        }
+
+
     }
 }
