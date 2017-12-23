@@ -24,6 +24,10 @@ namespace FantaCode.Todoapi
                 todoRepository.Add(todo);
         }
 
+    [HttpGet]
+    public IEnumerable<Todo> Get() => todoRepository.GetAll();
+
+
         // PUT api/todo/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]Todo todo)
@@ -31,6 +35,14 @@ namespace FantaCode.Todoapi
             todo.TodoId = id;
             if (ModelState.IsValid)
                 todoRepository.Update(todo);
+        }
+
+        [HttpDelete("{id}")]
+        public void Delete(int id, [FromBody]Todo todo)
+        {
+            todo.TodoId = id;
+            if (ModelState.IsValid)
+                todoRepository.Delete(todo);
         }
 
 
