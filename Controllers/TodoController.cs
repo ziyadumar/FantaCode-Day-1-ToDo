@@ -9,5 +9,9 @@ namespace FantaCode.Todo.Controllers
     [Route("v1/[controller]")]
     public class TodoController : Controller
     {
+        [HttpGet]
+        public async Task<String> Get() {
+            return "Hello Todo!";
+        }
     }
 }
