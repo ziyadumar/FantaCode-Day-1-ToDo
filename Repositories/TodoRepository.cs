@@ -20,6 +20,15 @@ namespace FantaCode.Todoapi.Repositories
     }
 
 
+    public IEnumerable<Todo> GetAll()
+    {
+        using (IDbConnection dbConnection = GetConnection())
+        {
+            dbConnection.Open();
+            return dbConnection.Query<Todo>("SELECT * FROM Todo");
+        }
+    }
+
     public void Add(Todo item)
     {
         using (IDbConnection dbConnection = GetConnection())
@@ -36,8 +45,18 @@ namespace FantaCode.Todoapi.Repositories
         using (System.Data.IDbConnection dbConnection = GetConnection())
         {
             string sQuery = "UPDATE Todo SET Task = @Task,"
-                           + " Description = @Description," 
+                           + " Description = @Description" 
                            + " WHERE Todoid = @Todoid";
+            dbConnection.Open();
+            dbConnection.Query(sQuery, item1);
+        }
+    }
+
+    public void Delete(Todo item1)
+    {
+        using (System.Data.IDbConnection dbConnection = GetConnection())
+        {
+            string sQuery = "delete from Todo WHERE Todoid = @Todoid";
             dbConnection.Open();
             dbConnection.Query(sQuery, item1);
         }
