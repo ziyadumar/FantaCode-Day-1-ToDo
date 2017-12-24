@@ -16,7 +16,24 @@ namespace FantaCode.Todoapi
             todoRepository = new TodoRepository();
         }
 
+
+        //Display all
+        [HttpGet]
+        public IEnumerable<Todo> Get() => todoRepository.GetAll();
+
+
+        [HttpGet("{id}")]
+        public Todo ViewbyID(int id)
+        {
+            if (ModelState.IsValid)
+            {
+                return todoRepository.View(id);
+            }
+            else return null;
+        }
+
         // POST api/todo
+        //Insert
         [HttpPost]
         public void Post([FromBody]Todo todo)
         {
@@ -24,11 +41,8 @@ namespace FantaCode.Todoapi
                 todoRepository.Add(todo);
         }
 
-    [HttpGet]
-    public IEnumerable<Todo> Get() => todoRepository.GetAll();
-
-
         // PUT api/todo/5
+        //Update tasks and descrip
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]Todo todo)
         {
@@ -37,6 +51,7 @@ namespace FantaCode.Todoapi
                 todoRepository.Update(todo);
         }
 
+        //Delete
         [HttpDelete("{id}")]
         public void Delete(int id, [FromBody]Todo todo)
         {
@@ -44,7 +59,5 @@ namespace FantaCode.Todoapi
             if (ModelState.IsValid)
                 todoRepository.Delete(todo);
         }
-
-
     }
 }
