@@ -34,8 +34,8 @@ namespace FantaCode.Todoapi.Repositories
         {
             using (IDbConnection dbConnection = GetConnection())
             {
-                string sQuery = "INSERT INTO Todo (Task, Description)"
-                                + " VALUES(@Task, @Description)";
+                string sQuery = "INSERT INTO Todo (Task, Description, Done)"
+                                + " VALUES(@Task, @Description , @Done)";
                 dbConnection.Open();
                 dbConnection.Execute(sQuery, item);
             }
@@ -60,6 +60,19 @@ namespace FantaCode.Todoapi.Repositories
                 string sQuery = "UPDATE Todo SET Task = @Task,"
                                 + " Done = @Done ,"
                                + " Description = @Description"
+                               + " WHERE Todoid = @Todoid";
+                dbConnection.Open();
+                dbConnection.Query(sQuery, item1);
+            }
+        }
+
+        
+        public void Done(Todo item1)
+        {
+            using (System.Data.IDbConnection dbConnection = GetConnection())
+            {
+                string sQuery = "UPDATE Todo SET "
+                                + " Done = @Done "
                                + " WHERE Todoid = @Todoid";
                 dbConnection.Open();
                 dbConnection.Query(sQuery, item1);
