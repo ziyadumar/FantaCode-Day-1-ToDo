@@ -61,11 +61,13 @@ namespace FantaCode.Todoapi
 
         //Delete
         [HttpDelete("{id}")]
-        public void Delete(int id, [FromBody]Todo todo)
+        public Todo Delete(int id)
         {
-            todo.TodoId = id;
             if (ModelState.IsValid)
-                todoRepository.Delete(todo);
+            {
+                return todoRepository.Delete(id);
+            }
+            else return null;
         }
     }
 }

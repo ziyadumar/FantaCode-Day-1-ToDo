@@ -78,13 +78,15 @@ namespace FantaCode.Todoapi.Repositories
             }
         }
 
-        public void Delete(Todo item1)
+        public Todo Delete(int item)
         {
             using (System.Data.IDbConnection dbConnection = GetConnection())
             {
-                string sQuery = "delete from Todo WHERE Todoid = @Todoid";
+                string sQuery = "delete from Todo WHERE Todoid = @id";
                 dbConnection.Open();
-                dbConnection.Query(sQuery, item1);
+                List<Todo> todos = dbConnection.Query<Todo>(sQuery, new { id = item }).ToList();
+                
+                return todos.FirstOrDefault();
             }
         }
     }
