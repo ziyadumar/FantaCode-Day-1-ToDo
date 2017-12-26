@@ -11,11 +11,13 @@ Get the list of todo items.
 ```json
 [
     {
-        "todoId": 12,
-        "task": "Hello",
-        "description": "Desc",
-        "date": "2017-12-23T13:07:31.85",
-        "done": false
+
+        "TodoId": 12,
+        "Task": "Hello",
+        "Description": "Desc",
+        "Date": "2017-12-23T13:07:31.85",
+        "Done": false
+
     }
 ]
 ```
@@ -26,13 +28,17 @@ This endpoint can be used to add a Todo.x
 
 #### Body
 ```json
-[
+
+
 {
-"Task":"qwerty",
-"Description":"ghdg",
-"Done" : false
+		
+	"Task":"qwerty",		
+	"Description":"ghdg",		
+	"Done" : false
+	
 } 
-]
+
+
 ```
 ### 3. api/Todo/{id} (PUT)
 
@@ -40,13 +46,15 @@ This endpoint can be used to update a Todo item,where 'id' denotes the unique va
 
 #### Body
 ```json
-[
+
+
 {
-"Task":"twing",
-"Description":"adf",
-"Done" : false
+		
+	"Task":"twing",		
+	"Description":"adf",		
+	"Done" : false
 }
-]
+
 ```
 ### 4. api/Todo/{id} (DELETE)
 
