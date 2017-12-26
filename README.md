@@ -26,7 +26,6 @@ This endpoint can be used to add a Todo.x
 
 #### Body
 ```json
-
 {
 		
 	"Task":"qwerty",		
@@ -34,7 +33,6 @@ This endpoint can be used to add a Todo.x
 	"Done" : false
 	
 } 
-
 ```
 ### 3. api/Todo/{id} (PUT)
 
@@ -42,7 +40,6 @@ This endpoint can be used to update a Todo item,where 'id' denotes the unique va
 
 #### Body
 ```json
-
 {
 		
 	"Task":"twing",		

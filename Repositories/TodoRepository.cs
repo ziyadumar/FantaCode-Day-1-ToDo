@@ -66,7 +66,6 @@ namespace FantaCode.Todoapi.Repositories
             }
         }
 
-        
         public void Done(Todo item1)
         {
             using (System.Data.IDbConnection dbConnection = GetConnection())
