@@ -35,7 +35,7 @@ namespace FantaCode.Todoapi.Repositories
             using (IDbConnection dbConnection = GetConnection())
             {
                 string sQuery = "INSERT INTO Todo (Task, Description, Done)"
-                                + " VALUES(@Task, @Description , @Done)";
+                                + " VALUES(@Task, @Description, @Done)";
                 dbConnection.Open();
                 dbConnection.Execute(sQuery, item);
             }
@@ -66,7 +66,6 @@ namespace FantaCode.Todoapi.Repositories
             }
         }
 
-        
         public void Done(Todo item1)
         {
             using (System.Data.IDbConnection dbConnection = GetConnection())
