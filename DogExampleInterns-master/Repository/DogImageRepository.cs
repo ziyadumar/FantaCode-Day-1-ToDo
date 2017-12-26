@@ -6,30 +6,29 @@ using Newtonsoft.Json;
 
 namespace DogAPI.Repository
 {
-    public class DogResponse
+    public class DogImageResponse
     {
-        public string Status { get; set; }
-        public List<string> Message { get; set; }
+        public string ImageUrl { get; set; }
     }
-    public class DogRepository
+    public class DogImageRepository
     {
         private string _dogBaseUrl;
-        public DogRepository()
+        public DogImageRepository()
         {
             _dogBaseUrl = "https://dog.ceo/api/";
         }
 
-        public async Task<List<string>> GetBreedList()
+        public async Task<string> GetImageList(String name)
         {
             var client = new HttpClient();
 
-            var response = await client.GetAsync(_dogBaseUrl + "breeds/list");
+            var response = await client.GetAsync(_dogBaseUrl +"breed/"+name+"/images/random");
 
             //some logic
             var content = await response.Content.ReadAsStringAsync();
-            var list = JsonConvert.DeserializeObject<DogResponse>(content);
+            var url = JsonConvert.DeserializeObject<DogImageResponse>(content);
             
-            return list.Message;
+            return url.ImageUrl;
         }
     }
 }
