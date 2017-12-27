@@ -56,7 +56,7 @@ namespace DogAPI.Repository
             return url.Message;
         }
 
-        public async Task<List<DogBI>> loadimageAsync()
+        public async Task<List<DogBI>> loadBothAsync()
         {
 
             List<String> _alist = new List<string>();
@@ -65,7 +65,12 @@ namespace DogAPI.Repository
             
             for (int i = 0; i < 10; i++)
             {
-                doglist.Add(new DogBI(){Name = _alist[i], Image = await GetImageList(_alist[i])});
+                doglist.Add(
+                            new DogBI(){
+                                        Name = _alist[i], 
+                                        Image = await GetImageList(_alist[i])
+                                        }
+                            );
                 
             }
             return doglist;

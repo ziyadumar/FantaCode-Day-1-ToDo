@@ -10,17 +10,17 @@ namespace DogBreedWithImage.Controllers
     public class DogController : Controller
     {
 
-        private readonly DogRepository dogRepository;
+        private readonly DogRepository _anInstance;
 
         public DogController()
         {
-            dogRepository = new DogRepository();
+            _anInstance = new DogRepository();
         }
 
 
         // GET api/values
         [HttpGet]
-        public async Task<IEnumerable<DogBI>> Get() => await dogRepository.loadimageAsync();
+        public async Task<IEnumerable<DogBI>> Get() => await _anInstance.loadBothAsync();
 
     }
 }
